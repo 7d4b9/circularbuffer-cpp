@@ -5,7 +5,7 @@
 #include <algorithm>
 
 /*
- * CircularBuffer: audio buffer that allows to store the N last pushed samples, N being the
+ * CircularBuffer: buffer that allows to store the N last pushed samples, N being the
  *  _capacity (or less if the buffer is not full). When the buffer is full, the oldest samples are
  *  overwritten.
  * See https://en.wikipedia.org/wiki/Circular_buffer
@@ -114,16 +114,14 @@ private:
    */
   const size_t _capacity;
 
-  /* data: C-style array containing the samples. We don't use STL containers because we want to
-   *  work on large numbers of samples efficiently (we want to be able to store several seconds of
-   *  audio)
+  /* data: C-style array containing the samples.
    */
-  SampleType*const _data;
+  SampleType* const _data;
 
   /* limit: is the last C-style data array last element.
    * Formaly it is assumed that capacity = (limit - data) / sample-size
    */
-  SampleType*const _end;
+  SampleType* const _end;
 
   /* size: the available stored samples number
    */
